@@ -1,11 +1,9 @@
 @CHARSET "UTF-8";
 
-.alert {
-	color: red;
-	font-weight: bold;
-}
 
-.aviso {
-	color: green;
-	font-weight: bold;
+
+.fundaContent{
+	
+	margin-top: 10em;
+	
 }

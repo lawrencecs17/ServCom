@@ -9,7 +9,7 @@
 	$isOk=true;
 	$alert_login="Ha introducido a caracteres no permitidos en su login";	
 	$alert_password="Ha introducido a caracteres no permitidos en su password";
-	$alert_autenticate = "Login o Password incorrectos, verifique";
+	$alert_autenticate = "Login o Password incorrectos";
 	
 	$pnlcontent = new Panel("../view/login.html");
 	
@@ -63,7 +63,7 @@
 	
 	if($isOk==false)
 	{
-		$pnlmain = new Panel("../view/index.html");
+		$pnlmain = new Panel("../view/index2.html");
 		$pnlmain->add("content", $pnlcontent);
 		$pnlmain->show();
 	}
