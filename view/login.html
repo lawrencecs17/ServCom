@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../css/fundacion.css">
+<title>Autenticacion</title>
+</head>
+<body>
+	<h2 class="alert" align="center">{alert}</h2>
+	<form action="login.php" method="post">
+	<table width="400" border="0" align="center">
+		  <tr>
+		    <td>login</td>
+		    <td><label>
+		      <input type="text" name="username" id="username" required="required"/>
+		    </label></td>
+		    <td class="alert">{alert_login}</td>
+		  </tr>
+		  <tr>
+		    <td>password</td>
+		    <td><label>
+		      <input type="password" name="password" id="password" required="required"/>
+		    </label></td>
+		    <td class="alert">{alert_password}</td>
+		  </tr>
+		  <tr>
+		    <td colspan="2" align="center"><label>
+		      <input type="submit" name="enviar" id="enviar" value="Aceptar" />
+		    </label></td>
+		  </tr>		 
+		</table>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+
+-- -----------------------------------------------------
+-- Table `Fundacion`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `Fundacion` (
+  `idFundacion` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NOT NULL ,
+  `telefono` VARCHAR(45) NOT NULL ,
+  `direccion` VARCHAR(45) NOT NULL ,
+  `email` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`idFundacion`) );
+
+
+-- -----------------------------------------------------
+-- Table `Persona`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `Persona` (
+  `idPersona` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NOT NULL ,
+  `apellido` VARCHAR(45) NOT NULL ,
+  `cedula` VARCHAR(45) NOT NULL UNIQUE,
+  `email` VARCHAR(45) NOT NULL ,
+  `userName` VARCHAR(45) NOT NULL UNIQUE ,
+  `password` VARCHAR(45) NOT NULL ,
+  `telefono` VARCHAR(45) NOT NULL ,
+  `rol` INT NOT NULL ,
+  `fkFundacion` INT NOT NULL ,
+  PRIMARY KEY (`idPersona`) ,
+  CONSTRAINT `fk_Persona_Fundacion1`
+    FOREIGN KEY (`fkFundacion` )
+    REFERENCES `Fundacion` (`idFundacion` )
+    );
+
+
+-- -----------------------------------------------------
+-- Table `Egreso`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `Egreso` (
+  `idEgreso` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NOT NULL ,
+  `descripcion` VARCHAR(45) NOT NULL ,
+  `estatus` INT NOT NULL ,
+  `tipo` INT NOT NULL ,
+  `fecha` DATE NOT NULL ,
+  `fkPersona` INT NOT NULL ,
+  PRIMARY KEY (`idEgreso`) ,
+  CONSTRAINT `fk_Egreso_Persona1`
+    FOREIGN KEY (`fkPersona` )
+    REFERENCES `Persona` (`idPersona` )
+    );
+
+
+-- -----------------------------------------------------
+-- Table `Factura`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `Factura` (
+  `idFactura` INT NOT NULL AUTO_INCREMENT,
+  `rif` VARCHAR(45) NOT NULL, 
+  `noFactura` VARCHAR(45) NOT NULL ,
+  `noControl` VARCHAR(45) NOT NULL ,
+  `emisor` VARCHAR(45) NOT NULL ,
+  `fechaEmision` DATE NOT NULL ,
+  `comprador` VARCHAR(45) NOT NULL ,
+  `descripcion` VARCHAR(45) NOT NULL ,
+  `estatus` INT NOT NULL ,
+  `totalFactura` DOUBLE NOT NULL ,
+  `monto` DOUBLE NOT NULL ,	
+  `ajuste` DOUBLE NULL ,
+  `baseImponible` FLOAT NULL ,
+  `iva` FLOAT NULL ,
+  `cantidad` VARCHAR(45) NULL ,
+  `precioUnitario` DOUBLE NULL ,
+  `fkEgreso` INT NOT NULL ,
+  `fkPersona` INT NOT NULL ,
+  PRIMARY KEY (`idFactura`) ,
+  CONSTRAINT `fk_Factura_Proyecto_Programa1`
+    FOREIGN KEY (`fkEgreso` )
+    REFERENCES `Egreso` (`idEgreso` ),
+  CONSTRAINT `fk_Factura_Persona1`
+    FOREIGN KEY (`fkPersona` )
+    REFERENCES `Persona` (`idPersona` )
+    );
+
+
+
+-- -----------------------------------------------------
+-- Table `Banco`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `Banco` (
+  `idBanco` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NOT NULL ,
+  `direccion` VARCHAR(45) NOT NULL ,
+  `telefono` VARCHAR(45) NOT NULL ,
+  `fkFundacion` INT NOT NULL ,
+  PRIMARY KEY (`idBanco`) ,
+  CONSTRAINT `fk_Banco_Fundacion1`
+    FOREIGN KEY (`fkFundacion` )
+    REFERENCES `Fundacion` (`idFundacion` )
+   );
+
+
+
+-- -----------------------------------------------------
+-- Table `Cuenta`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `Cuenta` (
+  `idCuenta` INT NOT NULL AUTO_INCREMENT,
+  `codigoCliente` VARCHAR(45) NOT NULL ,
+  `titular` VARCHAR(45) NOT NULL ,
+  `tipo` INT NOT NULL,	
+  `fkBanco` INT NOT NULL ,
+  PRIMARY KEY (`idCuenta`) ,
+  CONSTRAINT `fk_Cuenta_Banco1`
+    FOREIGN KEY (`fkBanco` )
+    REFERENCES `Banco` (`idBanco` ));
+
+-- -----------------------------------------------------
+-- Table `Cheque`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `Cheque` (
+  `idCheque` INT NOT NULL AUTO_INCREMENT,
+  `monto` DOUBLE NOT NULL ,
+  `beneficiario` VARCHAR(45) NOT NULL ,
+  `fechaEmision` DATE NOT NULL ,
+  `fkCuenta` INT NOT NULL ,
+  `fkPersona` INT NOT NULL ,
+  PRIMARY KEY (`idCheque`) ,
+  CONSTRAINT `fk_Cheque_Cuenta1`
+    FOREIGN KEY (`fkCuenta` )
+    REFERENCES `Cuenta` (`idCuenta` ),
+  CONSTRAINT `fk_Cheque_Persona1`
+    FOREIGN KEY (`fkPersona` )
+    REFERENCES `Persona` (`idPersona` ));
+
+-- -----------------------------------------------------
+-- Table `Pago`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `Pago` (
+  `fkCheque` INT NOT NULL AUTO_INCREMENT,
+  `fkFactura` INT NOT NULL ,
+  `tipo` INT NOT NULL ,
+  PRIMARY KEY (`fkFactura`, `fkCheque`) ,
+  CONSTRAINT `fk_Pago_Cheque1`
+    FOREIGN KEY (`fkCheque` )
+    REFERENCES `Cheque` (`idCheque` ),
+  CONSTRAINT `fk_Pago_Factura1`
+    FOREIGN KEY (`fkFactura` )
+    REFERENCES `Factura` (`idFactura` ));
+

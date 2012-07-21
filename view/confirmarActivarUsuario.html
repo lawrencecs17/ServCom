@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../css/fundacion.css">
+<title>Insert title here</title>
+</head>
+<body>
+	</br>
+	<h1>Activar Usuario</h1>
+	</br>
+	<form action="activarUsuarioYes.php" method="post">
+	<table width="500" border="1" align="center">
+		 <tr>
+		    <td width="200">Cedula</td>
+		    <input type="hidden" name="cedula" id="cedula" value={cedula} />
+		    <td><label>
+		      <strong>{cedula}</strong>
+		    </label></td>
+		  </tr>   	
+		   <tr>
+		    <td>Nombre</td>
+		    <td><label>
+		     <strong>{nombre}</strong>
+		    </label></td>
+		  </tr>
+		   <tr>
+		    <td>Apellido</td>
+		    <td><label>
+		      <strong>{apellido}</strong>
+		    </label></td>
+		  </tr>
+		   <tr>
+		    <td>Email</td>
+		    <td><label>
+		     <strong>{email}</strong>
+		    </label></td>
+		  </tr>
+		  <tr>
+		    <td>login</td>
+		    <td><label>
+		      <strong>{username}</strong>
+		    </label></td>
+		  </tr>
+		   <tr>
+		    <td>Telefono</td>
+		    <td><label>
+		      <strong>{telefono}</strong>
+		    </label></td>
+		  </tr>		
+		  <tr>
+		  	<td align="center"><label>
+		      <input type="button" name="regresar" id="regresar" value="regresar" />
+		    </label></td>
+		    <td align="center"><label>
+		      <input type="submit" name="activar" id="activar" value="activar" />
+		    </label></td>
+		  </tr>		 
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../css/fundacion.css">
+<title>Insert title here</title>
+</head>
+<body>
+	</br>
+	<h1>Modificar Fundacion</h1>
+	</br>
+	<form action="modificarFundacion.php" method="post">
+	<table width="800" border="0" align="right">
+		 <tr>
+		    <td width="200">RIF</td>
+		    <td><label>
+		     <input type="hidden" name="id" id="id"  value="{id}"/>
+		      <input type="text" name="rif" id="rif" required="required" value="{rif}"/>
+		    </label></td>
+		    <td class="alert" width="500"><label>{alert_rif}</label></td>
+		  </tr>   	
+		   <tr>
+		    <td>Nombre</td>
+		    <td><label>
+		      <input type="text" name="nombre" id="nombre" required="required" value="{nombre}"/>
+		    </label></td>
+		    <td class="alert" ><label>{alert_nombre}</label></td>
+		  </tr>		   
+		   <tr>
+		    <td>Email</td>
+		    <td><label>
+		      <input type="text" name="email" id="email" required="required" value="{email}"/>
+		    </label></td>
+		    <td class="alert" ><label>{alert_email}</label></td>
+		  </tr>		  
+		   <tr>
+		    <td>Telefono</td>
+		    <td><label>
+		      <input type="text" name="telefono" id="telefono" required="required" value="{telefono}"/>
+		    </label></td>
+		    <td class="alert" ><label>{alert_telefono}</label></td>
+		  </tr>
+		  <tr>
+		    <td>Direccion</td>
+		    <td><label>
+		      <input type="text" name="direccion" id="direccion" required="required" value="{direccion}"/>
+		    </label></td>
+		    <td class="alert" ><label>{alert_direccion}</label></td>
+		  </tr>			  
+		  <tr>
+		  	<td align="center"><label>
+		      <input type="button" name="regresar" id="regresar" value="regresar" />
+		    </label></td>
+		    <td align="center"><label>
+		      <input type="submit" name="enviar" id="enviar" value="aceptar" />
+		    </label></td>
+		  </tr>		 
+		</table>
+	</form>
+</body>
+</html>
