@@ -10,6 +10,7 @@
 	$ACTION="activarUsuario.php";
 	$TITULO="Desbloquear Usuario";
 	$LOCATION="gestionUsuarioV.php";
+	$TITULO_COMBO_BOX="Seleccione Usuario";
 	
 	//Se asigna a esta variable el archivo plantilla del home
 	$pnlmain = new Panel("../view/index.html");
@@ -54,6 +55,7 @@
 	$pnlcontent->add("action",$ACTION);
 	$pnlcontent->add("titulo",$TITULO);
 	$pnlcontent->add("location",$LOCATION);
+	$pnlcontent->add("tituloComboBox",$TITULO_COMBO_BOX);
 	$pnlcontent->add("listUsuario",$comboBox);
 	$pnlmain->add("content",$pnlcontent);
 	$pnlmain->show();

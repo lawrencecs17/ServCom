@@ -8,12 +8,12 @@
 	
 	// Constantes
 	$TITLE = "Gestion de Bancos";
-	$AGREGAR="registroUsuarioV.php";
-	$ELIMINAR="eliminarUsuarioV.php";
-	$CONSULTAR="#";
-	$EDITAR="modificarUsuarioV.php";
+	$AGREGAR="registrarBancoV.php";
+	$ELIMINAR="eliminarBancoV.php";
+	$CONSULTAR="consultarBancoV.php";
+	$EDITAR="modificarBancoV.php";
 	$ICON_UNLOCK="../image/icon_unlock";
-	$LINK_UNLOCK="activarUsuarioV.php";
+	$LINK_UNLOCK="activarBancoV.php";
 	$TITULO_DESBLOQUEAR="Desbloquear Banco";
 	$TITULO_AGREGAR="Registrar Banco";
 	$TITULO_ELIMINAR="Bloquear Banco";
