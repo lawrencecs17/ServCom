@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+<title>Insert title here</title>
+</head>
+<body>
+	</br>
+	<h1 align="center">{titulo}</h1>
+	</br>
+	<div class="container">
+		<div class="hero-unit">
+			<form action="{action}" method="post">
+				<table class="table">
+					<tr>
+						<td width="200">Cedula</td>
+						<input type="hidden" name="cedula" id="cedula" value={cedula} />
+						<td><label> <strong>{cedula}</strong>
+						</label></td>
+					</tr>
+					<tr>
+						<td>Nombre</td>
+						<td><label> <strong>{nombre}</strong>
+						</label></td>
+					</tr>
+					<tr>
+						<td>Apellido</td>
+						<td><label> <strong>{apellido}</strong>
+						</label></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td><label> <strong>{email}</strong>
+						</label></td>
+					</tr>
+					<tr>
+						<td>login</td>
+						<td><label> <strong>{username}</strong>
+						</label></td>
+					</tr>
+					<tr>
+						<td>Telefono</td>
+						<td><label> <strong>{telefono}</strong>
+						</label></td>
+					</tr>
+				</table>
+				<div class="form-actions" align="center">
+					<input class="btn" type="button" name="regresar" id="regresar"
+						value="regresar" onclick=" location.href='{location}' " /> <input class="btn btn-primary" type="submit"
+						name="activar" id="activar" value="{botonSubmit}" />
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

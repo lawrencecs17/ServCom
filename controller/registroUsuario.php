@@ -4,6 +4,12 @@
 	require_once '../model/Validacion.php';
 	require_once '../lib/Panel.php';	
 	
+	// CONSTANTES
+	
+	$LOCATION="gestionUsuarioV.php";
+	
+	/******************************/
+	
 	$usuario 	= new Persona();
 	$validacion = new Validacion();
 	$correcto 	= true;
@@ -25,6 +31,13 @@
 	$rol		 = 0;
 	
 	$pnlmain = new Panel("../view/index.html");
+	//Se buscan los datos del usuario que ha iniciado sesion
+	session_start();
+	$user = new Persona();
+	$user = $user->findByCedula($_SESSION["usuario"]);
+	$pnlmain->add("username",$user->getUsername());
+	
+	
 	$pnlcontent = new Panel("../view/registroUsuario.html");
 	
 	//Validacion de los campos
@@ -134,6 +147,7 @@
 		{
 			echo $resultado;
 			$pnlcontent = new Panel("../view/error.html");
+			$pnlcontent->add("location",$LOCATION);
 			$pnlcontent->add("aviso", "Ha ocurrido un error en el servidor intente luego.");
 			$pnlmain->add("content", $pnlcontent);
 			$pnlmain->show();
@@ -141,6 +155,7 @@
 		else
 		{
 			$pnlcontent = new Panel("../view/aviso.html");
+			$pnlcontent->add("location",$LOCATION);
 			$pnlcontent->add("aviso", "Registro Exitoso");
 			$pnlmain->add("content", $pnlcontent);
 			$pnlmain->show();

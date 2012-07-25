@@ -7,6 +7,15 @@
 	//Se asigna a esta variable el archivo plantilla del home
 	$pnlmain = new Panel("../view/index.html");
 	
+	// CONSTANTES
+	$LOCATION="eliminarUsuarioV.php";
+	
+	//Se buscan los datos del usuario que ha iniciado sesion
+	session_start();
+	$user = new Persona();
+	$user = $user->findByCedula($_SESSION["usuario"]);
+	$pnlmain->add("username",$user->getUsername());
+	
 	$usuario = new Persona();
 	if($_POST["cedula"])
 	{
@@ -28,6 +37,7 @@
 		$pnlcontent = new Panel("../view/error.html");
 		$pnlcontent->add("aviso","Ha ocurrido un error, por favor intente en otro momento");		
 	}
+	$pnlcontent->add("location",$LOCATION);
 	$pnlmain->add("content", $pnlcontent);
 	$pnlmain->show();
 ?>

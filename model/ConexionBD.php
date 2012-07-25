@@ -63,7 +63,7 @@ class ConexionBD {
 	}
 
 	public function conectarBD(ConexionBD $miBD) {
-		 
+			
 		$miBD->setConexion(mysql_connect($miBD->getDbhost(),$miBD->getDbusuario(),$miBD->getDbpassword()));
 
 		if (!$miBD->getConexion())
@@ -79,6 +79,6 @@ class ConexionBD {
 
 	}
 
-	 
+
 }
 ?>

@@ -8,7 +8,7 @@
 
 	$isOk=true;
 	$alert_login="Ha introducido a caracteres no permitidos en su login";	
-	$alert_password="Ha introducido a caracteres no permitidos en su password";
+	$alert_password="Ha introducido caracteres no permitidos en su password";
 	$alert_autenticate = "Login o Password incorrectos";
 	
 	$pnlcontent = new Panel("../view/login.html");
@@ -52,7 +52,7 @@
 		if($usuario)
 		{
 			$_SESSION["usuario"]=$usuario->getCedula();
-			echo "<script type='text/javascript'>window.location='modificarUsuarioV.php';</script>";			
+			echo "<script type='text/javascript'>window.location='mainV.php';</script>";			
 		}
 		else //El usuario o la contraseña son incorrectos. 
 		{

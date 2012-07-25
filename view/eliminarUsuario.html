@@ -7,23 +7,23 @@
 </head>
 <body>
 
-	<h1>Desactivar Usuario</h1>
-	<form action="eliminarUsuario.php" method="POST">
-		<table align="center" width="400" border="1">
-			<tr>
-				<td>Seleccione Usuario</td>
-				<td><SELECT NAME="listUsuario">
-						<OPTION VALUE="0">Seleccione</OPTION> {listUsuario}
-				</SELECT></td>
-			</tr>
-			<tr>		
-				<td align="right"><input type="button" name="regresar" id="regresar"
-					value="regresar" /></td>
-				<td align="left"><input type="submit" name="enviar"
-					id="enviar" value="aceptar" /></td>
-			</tr>
-		</table>
-	</form>
+	<h1 align="center">Bloquear Usuario</h1>
+	</br>
+	<div class="container" align="center">
+		<form action="eliminarUsuario.php" method="POST"
+			class="well">
+			<label align="center">Seleccione Usuario <SELECT
+				NAME="listUsuario">
+					<OPTION VALUE="0">Seleccione</OPTION> {listUsuario}
+			</SELECT></label>
+			<div class="form-actions" align="center">
+				<input class="btn" type="button" name="regresar" id="regresar"
+					value="regresar" onclick=" location.href='{location}'" /> <input
+					class="btn btn-primary" type="submit" name="aceptar" id="aceptar"
+					value="aceptar" />
+			</div>
+		</form>
+	</div>
 
 </body>
 </html>

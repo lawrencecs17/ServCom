@@ -7,8 +7,16 @@
 	require_once '../model/Persona.php';
 	require_once '../model/Validacion.php';
 	
+	//Constantes
+	$LOCATION="gestionUsuarioV.php";
+	
 	//Se asigna a esta variable el archivo plantilla del home
 	$pnlmain = new Panel("../view/index.html");
+	
+	//Se buscan los datos del usuario que ha iniciado sesion
+	$user = new Persona();
+	$user = $user->findByCedula($_SESSION["usuario"]);
+	$pnlmain->add("username",$user->getUsername());
 	
 	//Se procede la asignación
 	$pnlcontent = new Panel("../view/modificarUsuario.html");
@@ -34,6 +42,7 @@
 		$pnlcontent->add("telefono",$usuario->getTelefono());
 		
 		//Se muestra la página
+		$pnlcontent->add("location",$LOCATION);
 		$pnlmain->add("content", $pnlcontent);
 		$pnlmain->show();
 	}

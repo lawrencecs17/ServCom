@@ -20,7 +20,7 @@
 	$direccion	 = $_POST['direccion'];
 	
 	$pnlmain = new Panel("../view/index.html");
-	$pnlcontent = new Panel("../view/registroFundacion.html");
+	$pnlcontent = new Panel("../view/modificarFundacion.html");
 	
 	//Validacion de los campos
 	$fundacion = $fundacion->findById($id);
@@ -28,15 +28,17 @@
 	if($validacion->textValido($direccion)==false)
 	{
 		$pnlcontent->add("alert_direccion", $alert_text);
+		$correcto = false;
 	}
 	else
 	{
 		$pnlcontent->add("direccion", $direccion);
 	}
 	
-	if($validacion->textValido($rif)==false)
+	if($validacion->rifValido($rif)==false)
 	{
 		$pnlcontent->add("alert_rif", $alert_text);
+		$correcto = false;
 	}	
 	elseif ($fundacion->findByRif($rif)==null)
 	{
@@ -103,7 +105,7 @@
 	
 	
 
-	if($correcto)
+	if($correcto==true)
 	{	    	
     	$fundacion->setNombre($nombre);;
     	$fundacion->setTelefono($telefono);
@@ -130,7 +132,8 @@
 		}
 	}
 	else
-	{		
+	{
+		$pnlcontent->add("id",$id);		
 		$pnlmain->add("content", $pnlcontent);
 		$pnlmain->show();
 	}

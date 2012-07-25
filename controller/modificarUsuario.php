@@ -1,8 +1,14 @@
 <?php
 
+
+	session_start();
+	
 	require_once '../model/Persona.php';
 	require_once '../model/Validacion.php';
-	require_once '../lib/Panel.php';	
+	require_once '../lib/Panel.php';
+	
+	//Constantes
+	$LOCATION="gestionUsuarioV.php";
 	
 	$usuario 	= new Persona();
 	$validacion = new Validacion();
@@ -11,9 +17,8 @@
 	$alert_email= "*Email incorrecto";
 	$alert_num  = "*No es un numero";
 	$alert_pass = "*Las contraseñas no coinciden";
-	$alert_repeat="*Ya existe en nuestra Base de Datos"; 	
+	$alert_repeat="*Ya existe en nuestra Base de Datos";
 	
-	session_start();
 	$id 	     = $_SESSION["idPersona"];
 	$cedula 	 = $_POST['cedula'];
 	$nombre 	 = $_POST['nombre'];
@@ -23,6 +28,12 @@
 	$telefono 	 = $_POST['telefono'];
 	
 	$pnlmain = new Panel("../view/index.html");
+	
+	//Se buscan los datos del usuario que ha iniciado sesion
+	$user = new Persona();
+	$user = $user->findByCedula($_SESSION["usuario"]);
+	$pnlmain->add("username",$user->getUsername());
+	
 	$pnlcontent = new Panel("../view/modificarUsuario.html");
 	
 	//Validacion de los campos
@@ -139,6 +150,7 @@
 		if($resultado==false)
 		{
 			$pnlcontent = new Panel("../view/error.html");
+			$pnlcontent->add("location",$LOCATION);
 			$pnlcontent->add("aviso", "Ha ocurrido un error en el servidor intente luego.");
 			$pnlmain->add("content", $pnlcontent);
 			$pnlmain->show();
@@ -146,13 +158,15 @@
 		else
 		{
 			$pnlcontent = new Panel("../view/aviso.html");
+			$pnlcontent->add("location",$LOCATION);
 			$pnlcontent->add("aviso", "Actualizacion Exitosa");
 			$pnlmain->add("content", $pnlcontent);
 			$pnlmain->show();
 		}
 	}
 	else
-	{		
+	{	
+		$pnlcontent->add("location",$LOCATION);
 		$pnlmain->add("content", $pnlcontent);
 		$pnlmain->show();
 	}

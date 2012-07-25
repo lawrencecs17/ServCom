@@ -26,6 +26,19 @@ Class Validacion {
 		return true;
 	}
 	
+	public function rifValido($texto)
+	{
+		$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-. ";
+	
+		for ($i=0; $i<strlen($texto); $i++){
+			if (strpos($permitidos, substr($texto,$i,1))===false)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public function textUsernameValido($texto)
 	{
 		$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_@.,#;";

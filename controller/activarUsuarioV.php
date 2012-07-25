@@ -6,12 +6,22 @@
 	require_once '../model/ArrayList.php';
 	require_once '../model/ConexionBD.php';
 	
+	//Constantes	
+	$ACTION="activarUsuario.php";
+	$TITULO="Desbloquear Usuario";
+	$LOCATION="gestionUsuarioV.php";
 	
 	//Se asigna a esta variable el archivo plantilla del home
 	$pnlmain = new Panel("../view/index.html");
 	
+	//Se buscan los datos del usuario que ha iniciado sesion
+	session_start();
+	$user = new Persona();
+	$user = $user->findByCedula($_SESSION["usuario"]);
+	$pnlmain->add("username",$user->getUsername());
+	
 	//Se procede la asignación
-	$pnlcontent = new Panel("../view/activarUsuario.html");	
+	$pnlcontent = new Panel("../view/busquedaUsuario.html");	
 	
 	/****************************/
 	$miBD = new ConexionBD();
@@ -41,6 +51,9 @@
 	mysql_close();	
 	
 	/****************************/
+	$pnlcontent->add("action",$ACTION);
+	$pnlcontent->add("titulo",$TITULO);
+	$pnlcontent->add("location",$LOCATION);
 	$pnlcontent->add("listUsuario",$comboBox);
 	$pnlmain->add("content",$pnlcontent);
 	$pnlmain->show();

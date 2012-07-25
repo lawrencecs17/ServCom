@@ -7,54 +7,55 @@
 </head>
 <body>
 	</br>
-	<h1>Registro de Fundacion</h1>
+	<h1 align="center">Registro de Fundacion</h1>
 	</br>
-	<form action="registroFundacion.php" method="post">
-	<table width="800" border="0" align="right">
-		 <tr>
-		    <td width="200">RIF</td>
-		    <td><label>
-		      <input type="text" name="rif" id="rif" required="required" value="{rif}"/>
-		    </label></td>
-		    <td width="500"><label class="alert-error" >{alert_rif}</label></td>
-		  </tr>   	
-		   <tr>
-		    <td>Nombre</td>
-		    <td><label>
-		      <input type="text" name="nombre" id="nombre" required="required" value="{nombre}"/>
-		    </label></td>
-		    <td><label class="alert-error">{alert_nombre}</label></td>
-		  </tr>		   
-		   <tr>
-		    <td>Email</td>
-		    <td><label>
-		      <input type="text" name="email" id="email" required="required" value="{email}"/>
-		    </label></td>
-		    <td><label class="alert-error">{alert_email}</label></td>
-		  </tr>		  
-		   <tr>
-		    <td>Telefono</td>
-		    <td><label>
-		      <input type="text" name="telefono" id="telefono" required="required" value="{telefono}"/>
-		    </label></td>
-		    <td><label class="alert-error">{alert_telefono}</label></td>
-		  </tr>
-		  <tr>
-		    <td>Direccion</td>
-		    <td><label>
-		      <input type="text" name="direccion" id="direccion" required="required" value="{direccion}"/>
-		    </label></td>
-		    <td><label class="alert-error">{alert_direccion}</label></td>
-		  </tr>			  
-		  <tr>
-		  	<td align="center"><label>
-		      <input type="button" name="regresar" id="regresar" value="regresar" />
-		    </label></td>
-		    <td align="center"><label>
-		      <input type="submit" name="enviar" id="enviar" value="aceptar" />
-		    </label></td>
-		  </tr>		 
-		</table>
-	</form>
+	<div class="container">
+		<div class="hero-unit">
+			<form action="registroFundacion.php" method="post">
+				<table border="0" class="table">
+					<tr>
+						<td width="200">RIF</td>
+						<td><label> <input type="text" name="rif" id="rif"
+								required="required" value="{rif}" />
+						</label></td>
+						<td><label class="alert-error">{alert_rif}</label></td>
+					</tr>
+					<tr>
+						<td>Nombre</td>
+						<td><label> <input type="text" name="nombre"
+								id="nombre" required="required" value="{nombre}" />
+						</label></td>
+						<td><label class="alert-error">{alert_nombre}</label></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td><label> <input type="text" name="email"
+								id="email" required="required" value="{email}" />
+						</label></td>
+						<td><label class="alert-error">{alert_email}</label></td>
+					</tr>
+					<tr>
+						<td>Telefono</td>
+						<td><label> <input type="text" name="telefono"
+								id="telefono" required="required" value="{telefono}" />
+						</label></td>
+						<td><label class="alert-error">{alert_telefono}</label></td>
+					</tr>
+					<tr>
+						<td>Direccion</td>
+						<td><label> <input type="text" name="direccion"
+								id="direccion" required="required" value="{direccion}" />
+						</label></td>
+						<td><label class="alert-error">{alert_direccion}</label></td>
+					</tr>					
+				</table>
+				<div class="form-actions" align="center">
+					<input class="btn" type="button" name="regresar" id="regresar"
+						value="regresar" /> <input class="btn btn-primary" type="submit"
+						name="aceptar" id="aceptar" value="aceptar" />
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

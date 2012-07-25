@@ -6,76 +6,77 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1 align="center">Registro de Usuario</h1>
 	</br>
-	<h1>Registro de Usuario</h1>
-	</br>
-	<form action="registroUsuario.php" method="post">
-	<table width="500" border="0" align="center">
-		 <tr>
-		    <td width="200">Cedula</td>
-		    <td><label>
-		      <input type="text" name="cedula" id="cedula" required="required" value="{cedula}"/>
-		    </label></td>
-		    <td width="200"><label class="alert-error">{alert_cedula}</label></td>
-		  </tr>   	
-		   <tr>
-		    <td>Nombre</td>
-		    <td><label>
-		      <input type="text" name="nombre" id="nombre" required="required" value="{nombre}"/>
-		    </label></td>
-		    <td><label class="alert-error">{alert_nombre}</label></td>
-		  </tr>
-		   <tr>
-		    <td>Apellido</td>
-		    <td><label>
-		      <input type="text" name="apellido" id="apellido" required="required" value="{apellido}"/>
-		    </label></td>
-		    <td><label class="alert-error">{alert_apellido}</label></td>
-		  </tr>
-		   <tr>
-		    <td>Email</td>
-		    <td><label>
-		      <input type="text" name="email" id="email" required="required" value="{email}"/>
-		    </label></td>
-		    <td><label class="alert-error">{alert_email}</label></td>
-		  </tr>
-		  <tr>
-		    <td>login</td>
-		    <td><label>
-		      <input type="text" name="username" id="username" required="required" value="{username}"/>
-		    </label></td>
-		    <td><label class="alert-error">{alert_username}</label></td>
-		  </tr>
-		   <tr>
-		    <td>Telefono</td>
-		    <td><label>
-		      <input type="text" name="telefono" id="telefono" required="required" value="{telefono}"/>
-		    </label></td>
-		    <td><label class="alert-error">{alert_telefono}</label></td>
-		  </tr>
-		  <tr>
-		    <td>Password</td>
-		    <td><label>
-		      <input type="password" name="password" id="password" required="required" />
-		    </label></td>
-		    <td><label class="alert-error" >{alert_password}</label></td>
-		  </tr>
-		  <tr>
-		    <td>Repite tu Password</td>
-		    <td><label>
-		      <input type="password" name="password2" id="password2" required="required" />
-		    </label></td>
-		    <td><label class="alert-error" >{alert_password2}</label></td>
-		  </tr>
-		  <tr>
-		  	<td align="center"><label>
-		      <input type="button" name="regresar" id="regresar" value="regresar" />
-		    </label></td>
-		    <td align="center"><label>
-		      <input type="submit" name="enviar" id="enviar" value="aceptar" />
-		    </label></td>
-		  </tr>		 
-		</table>
-	</form>
+	<div class="container">
+		<div class="hero-unit">
+			<form action="registroUsuario.php" method="post">
+				<table border="0" class="table">
+					<tr>
+						<td width="200">Cedula</td>
+						<td><label> <input type="text" name="cedula"
+								id="cedula" required="required" value="{cedula}" />
+						</label></td>
+						<td width="200"><label class="alert-error">{alert_cedula}</label></td>
+					</tr>
+					<tr>
+						<td>Nombre</td>
+						<td><label> <input type="text" name="nombre"
+								id="nombre" required="required" value="{nombre}" />
+						</label></td>
+						<td><label class="alert-error">{alert_nombre}</label></td>
+					</tr>
+					<tr>
+						<td>Apellido</td>
+						<td><label> <input type="text" name="apellido"
+								id="apellido" required="required" value="{apellido}" />
+						</label></td>
+						<td><label class="alert-error">{alert_apellido}</label></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td><label> <input type="text" name="email"
+								id="email" required="required" value="{email}" />
+						</label></td>
+						<td><label class="alert-error">{alert_email}</label></td>
+					</tr>
+					<tr>
+						<td>Login</td>
+						<td><label> <input type="text" name="username"
+								id="username" required="required" value="{username}" />
+						</label></td>
+						<td><label class="alert-error">{alert_username}</label></td>
+					</tr>
+					<tr>
+						<td>Telefono</td>
+						<td><label> <input type="text" name="telefono"
+								id="telefono" required="required" value="{telefono}" />
+						</label></td>
+						<td><label class="alert-error">{alert_telefono}</label></td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td><label> <input type="password" name="password"
+								id="password" required="required" />
+						</label></td>
+						<td><label class="alert-error">{alert_password}</label></td>
+					</tr>
+					<tr>
+						<td>Repite tu Password</td>
+						<td><label> <input type="password" name="password2"
+								id="password2" required="required" />
+						</label></td>
+						<td><label class="alert-error">{alert_password2}</label></td>
+					</tr>
+				</table>
+				<div class="form-actions" align="center">
+					<input class="btn" type="button" name="regresar" id="regresar"
+						value="regresar" onclick=" location.href='{location}'" /> <input
+						class="btn btn-primary" type="submit" name="aceptar" id="aceptar"
+						value="aceptar" />
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

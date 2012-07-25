@@ -5,8 +5,17 @@
 	require_once '../model/Persona.php';
 	require_once '../model/Validacion.php';
 	
+	// CONSTANTES
+	$LOCATION="eliminarUsuarioV.php";
+	
 	//Se asigna a esta variable el archivo plantilla del home
-	$pnlmain = new Panel("../view/index.html");
+	$pnlmain = new Panel("../view/index.html");	
+	
+	//Se buscan los datos del usuario que ha iniciado sesion
+	session_start();
+	$user = new Persona();
+	$user = $user->findByCedula($_SESSION["usuario"]);
+	$pnlmain->add("username",$user->getUsername());
 	
 	//Se procede la asignación
 	$pnlcontent = new Panel("../view/confirmarEliminarUsuario.html");
@@ -32,11 +41,12 @@
 	}
 	else
 	{
-		$pnlcontent = new Panel("../view/error.html");
+		$pnlcontent = new Panel("../view/error.html");		
 		$pnlcontent->add("aviso","No ha seleccionado un usuario valido");
 	}
 	//Se muestra la página
-	$pnlmain->add("content", $pnlcontent);
+	$pnlcontent->add("location",$LOCATION);
+	$pnlmain->add("content", $pnlcontent);	
 	$pnlmain->show();
 	
 ?>
