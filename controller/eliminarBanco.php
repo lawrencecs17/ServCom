@@ -34,7 +34,7 @@
 		
 		$pnlcontent->add("id",$banco->getIdBanco());
 		$pnlcontent->add("nombre",$banco->getNombre());
-		$pnlcontent->add("direccion",$banco->getNombre());
+		$pnlcontent->add("direccion",$banco->getDireccion());
 		$pnlcontent->add("telefono",$banco->getTelefono());		
 		
 	}

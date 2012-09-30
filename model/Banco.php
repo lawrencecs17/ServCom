@@ -182,6 +182,24 @@ class Banco {
     	mysql_close();
     	return $resultado;
     }
+    
+    public function update(Banco $banco)
+    {
+    	$query = "UPDATE Banco SET ";
+    	$query = $query." nombre='".$banco->getNombre()."', ";
+    	$query = $query." direccion='".$banco->getDireccion()."', ";
+    	$query = $query." telefono='".$banco->getTelefono()."' ";
+    	$query = $query." WHERE idBanco= ".$banco->getIdBanco();
+    	
+    	echo $query;
+    
+    	$miBD = new ConexionBD();
+    	$miBD->setConexion($miBD->conectarBD($miBD));
+    
+    	$resultado=mysql_query($query,$miBD->getConexion());
+    	mysql_close();
+    	return $resultado;
+    }
 
 
 }

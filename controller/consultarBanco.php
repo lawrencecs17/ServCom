@@ -7,10 +7,10 @@
 	require_once '../model/Banco.php';
 	
 	// CONSTANTES
-	$LOCATION="activarBancoV.php";
-	$ACTION = "activarBancoYes.php";
-	$TITULO = "Activar Banco";
-	$BOTON_VALUE = "activar";
+	$LOCATION="consultarBancoV.php";
+	$ACTION ="gestionBancoV.php";
+	$TITULO = "Consultar Banco";
+	$BOTON_VALUE = "aceptar";
 	
 	//Se asigna a esta variable el archivo plantilla del home
 	$pnlmain = new Panel("../view/index.html");	

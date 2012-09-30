@@ -7,11 +7,11 @@
 </head>
 <body>
     </br>
-    <h1 align="center">Activar Banco</h1>
+    <h1 align="center">{titulo}</h1>
     </br>
     <div class="container">
         <div class="hero-unit">
-            <form action="activarBancoYes.php" method="post">
+            <form action="{action}" method="post">
                 <table class="table">                   
                     <tr>
                         <td width="200">Nombre</td>
@@ -34,7 +34,7 @@
                     <input class="btn" type="button" name="regresar" id="regresar"
                         value="regresar" onclick=" location.href='{location}' " /> <input
                         class="btn btn-primary" type="submit" name="activar"
-                        id="desactivar" value="activar" />
+                        id="desactivar" value="{boton_value}" />
                 </div>
             </form>
         </div>

@@ -85,7 +85,7 @@ if($correcto)
 
 	if($resultado==false)
 	{
-		echo $resultado;
+		
 		$pnlcontent = new Panel("../view/error.html");
 		$pnlcontent->add("location",$LOCATION);
 		$pnlcontent->add("aviso", "Ha ocurrido un error en el servidor intente luego.");
