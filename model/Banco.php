@@ -168,6 +168,20 @@ class Banco {
     	mysql_close();
     	return $resultado;
     }
+    
+    public function active($id)
+    {
+    	$query = "UPDATE Banco SET ";
+    	$query = $query." status='1' ";
+    	$query = $query." WHERE idBanco= ".$id;
+    
+    	$miBD = new ConexionBD();
+    	$miBD->setConexion($miBD->conectarBD($miBD));
+    
+    	$resultado=mysql_query($query,$miBD->getConexion());
+    	mysql_close();
+    	return $resultado;
+    }
 
 
 }

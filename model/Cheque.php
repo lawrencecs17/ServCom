@@ -20,9 +20,7 @@ class Cheque {
     private $fkCuenta;
     private $fkPersona;
     
-    public function getIdCheque() {
-        return $this->idCheque;
-    }
+   
 
     public function setIdCheque($idCheque) {
         $this->idCheque = $idCheque;
@@ -89,6 +87,11 @@ class Cheque {
     }
 
 
+
+    public function getIdCheque()
+    {
+        return $this->idCheque;
+    }
 }
 
 ?>

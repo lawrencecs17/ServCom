@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+<title>Insert title here</title>
+</head>
+<body>
+    </br>
+    <h1 align="center">Activar Banco</h1>
+    </br>
+    <div class="container">
+        <div class="hero-unit">
+            <form action="activarBancoYes.php" method="post">
+                <table class="table">                   
+                    <tr>
+                        <td width="200">Nombre</td>
+                        <input type="hidden" name="id" id="id" value={id} />
+                        <td><label> <strong>{nombre}</strong>
+                        </label></td>
+                    </tr>
+                    <tr>
+                        <td>Telefono</td>
+                        <td><label> <strong>{telefono}</strong>
+                        </label></td>
+                    </tr>
+                    <tr>
+                        <td>Direccion</td>
+                        <td><label> <strong>{direccion}</strong>
+                        </label></td>
+                    </tr>
+                </table>
+                <div class="form-actions" align="center">
+                    <input class="btn" type="button" name="regresar" id="regresar"
+                        value="regresar" onclick=" location.href='{location}' " /> <input
+                        class="btn btn-primary" type="submit" name="activar"
+                        id="desactivar" value="activar" />
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
