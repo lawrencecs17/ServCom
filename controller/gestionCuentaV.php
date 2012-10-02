@@ -8,12 +8,12 @@
 	
 	// Constantes
 	$TITLE = "Gestion de Cuentas";
-	$AGREGAR="registroUsuarioV.php";
-	$ELIMINAR="eliminarUsuarioV.php";
-	$CONSULTAR="#";
-	$EDITAR="modificarUsuarioV.php";
+	$AGREGAR="registrarCuentaV.php";
+	$ELIMINAR="eliminarCuentaV.php";
+	$CONSULTAR="consultarCuentaV.php";
+	$EDITAR="modificarCuentaV.php";
 	$ICON_UNLOCK="../image/icon_unlock";
-	$LINK_UNLOCK="activarUsuarioV.php";
+	$LINK_UNLOCK="activarCuentaV.php";
 	$TITULO_DESBLOQUEAR="Desbloquear Cuenta";
 	$TITULO_AGREGAR="Registrar Cuenta";
 	$TITULO_ELIMINAR="Bloquear Cuenta";

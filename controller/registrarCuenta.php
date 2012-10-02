@@ -1,26 +1,28 @@
 <?php
 
 require_once '../model/Banco.php';
+require_once '../model/Cuenta.php';
 require_once '../model/Persona.php';
 require_once '../model/Validacion.php';
 require_once '../lib/Panel.php';
 
 //CONSTANTES
-$FK_FUNDACION="1";
 $STATUS="1";
-$LOCATION="gestionBancoV.php";
+$LOCATION="gestionCuentaV.php";
 
-$banco 	= new Banco();
+$cuenta	= new Cuenta();
 $validacion = new Validacion();
 $correcto 	= true;
 $alert_text = "*Caracteres invalidos, no admitido acentos, ñ o simbolos  ";
 $alert_email= "*Email incorrecto";
 $alert_num  = "*No es un numero";
 $alert_repeat="*Ya existe en nuestra Base de Datos";
+$alert_null="*Debe seleccionar una opcion valida";
 
-$nombre 	 = $_POST['nombre'];
-$telefono 	 = $_POST['telefono'];
-$direccion	 = $_POST['direccion'];
+$noCuenta	 = $_POST['noCuenta'];
+$titular 	 = $_POST['titular'];
+$fkBanco	 = $_POST['banco'];
+$listBancos	 = $_POST['bancos'];
 
 $pnlmain = new Panel("../view/index.html");
 
@@ -30,59 +32,58 @@ $user = new Persona();
 $user = $user->findByCedula($_SESSION["usuario"]);
 $pnlmain->add("username",$user->getUsername());
 
-$pnlcontent = new Panel("../view/registroBanco.html");
+$pnlcontent = new Panel("../view/registrarCuenta.html");
 
 //Validacion de los campos
 
-if($validacion->textValido($direccion)==false)
+if($validacion->textValido($noCuenta)==false)
 {
-	$pnlcontent->add("alert_direccion", $alert_text);
+	$pnlcontent->add("alert_noCuenta", $alert_text);
+	$correcto 	= false;
+}
+
+elseif ($cuenta->findByNoCuentaAndBanco($noCuenta,$fkBanco)!=null)
+{
+	$pnlcontent->add("alert_noCuenta", $alert_repeat." en el mismo Banco");
 	$correcto 	= false;
 }
 else
 {
-	$pnlcontent->add("direccion", $direccion);
+	$pnlcontent->add("noCuenta", $noCuenta);
 }
 
 
-if($validacion->nombreValido($nombre)==false)
+if($validacion->nombreValido($titular)==false)
 {
-	$pnlcontent->add("alert_nombre", $alert_text);
-	$correcto 	= false;
-}
-elseif ($banco->findByName($nombre)==null)
-{
-	$pnlcontent->add("nombre", $nombre);
-}
-else
-{
-	$pnlcontent->add("alert_nombre", $alert_repeat);
-	$pnlcontent->add("nombre", $nombre);
-	$correcto 	= false;
-}
-
-
-if($validacion->numValido($telefono)==false)
-{
-	$pnlcontent->add("alert_telefono", $alert_num);
+	$pnlcontent->add("alert_titular", $alert_text);
 	$correcto 	= false;
 }
 else
 {
-	$pnlcontent->add("telefono", $telefono);
+	$pnlcontent->add("titular", $titular);
+}
+
+if($fkBanco == 0)
+{
+	$pnlcontent->add("alert_banco", $alert_null);
+	$pnlcontent->add("list", $listBancos);
+	$correcto 	= false;
+}
+else
+{
+	$pnlcontent->add("list", $listBancos);
 }
 
 
 
 if($correcto)
 {
-	$banco->setNombre($nombre);;
-	$banco->setTelefono($telefono);
-	$banco->setDireccion($direccion);
-	$banco->setStatus($STATUS);
-	$banco->setFkFundacion($FK_FUNDACION);
+	$cuenta->setCodigoCliente($noCuenta);
+	$cuenta->setFkBanco($fkBanco);
+	$cuenta->setStatus($STATUS);
+	$cuenta->setTitular($titular);
 
-	$resultado = $banco->registrar($banco);
+	$resultado = $cuenta->registrar($cuenta);
 
 	if($resultado==false)
 	{
@@ -108,5 +109,4 @@ else
 	$pnlmain->add("content", $pnlcontent);
 	$pnlmain->show();
 }
-
 ?>

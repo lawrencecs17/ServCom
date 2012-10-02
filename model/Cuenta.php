@@ -18,7 +18,9 @@ class Cuenta {
     private $codigoCliente;
     private $titular;
     private $tipo;
+    private $status;
     private $fkBanco;
+    private $banco;
     
     public function getTipo() {
         return $this->tipo;
@@ -81,6 +83,147 @@ class Cuenta {
         }
     }
 
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+    
+    public function findByNoCuenta($noCuenta)
+    {
+    	$miBD = new ConexionBD();
+    	$miBD->setConexion($miBD->conectarBD($miBD));
+    	$cuenta = null;
+    
+    	$query = "Select * from Cuenta Where codigoCliente = '$noCuenta'";
+    	$resultado = mysql_query($query,$miBD->getConexion());
+    	$fila = mysql_fetch_array($resultado);
+    	if($fila != null)
+    	{
+    		$cuenta = new Cuenta();
+    		$cuenta->setIdCuenta($fila['idCuenta']);
+    		$cuenta->setCodigoCliente($fila['codigoCliente']);
+    		$cuenta->setTitular($fila['titular']);
+    		$cuenta->setStatus($fila['status']);
+    		$cuenta->setFkBanco($fila['fkBanco']);
+    		
+    	}
+    	mysql_close();
+    	return $cuenta;
+    
+    }
+    
+    public function findByNoCuentaAndBanco($noCuenta, $fkBanco)
+    {
+    	$miBD = new ConexionBD();
+    	$miBD->setConexion($miBD->conectarBD($miBD));
+    	$cuenta = null;
+    
+    	$query = "Select * from Cuenta Where codigoCliente = '$noCuenta' AND fkBanco='$fkBanco'";
+    	$resultado = mysql_query($query,$miBD->getConexion());
+    	$fila = mysql_fetch_array($resultado);
+    	if($fila != null)
+    	{
+    		$cuenta = new Cuenta();
+    		$cuenta->setIdCuenta($fila['idCuenta']);
+    		$cuenta->setCodigoCliente($fila['codigoCliente']);
+    		$cuenta->setTitular($fila['titular']);
+    		$cuenta->setStatus($fila['status']);
+    		$cuenta->setFkBanco($fila['fkBanco']);
+    
+    	}
+    	mysql_close();
+    	return $cuenta;
+    
+    }
+    
+    public function findById($id)
+    {
+    	$miBD = new ConexionBD();
+    	$miBD->setConexion($miBD->conectarBD($miBD));
+    	$cuenta = null;
+    
+    	$query = "Select c.*,b.nombre as nombreBanco from Cuenta c, Banco b Where idCuenta = $id AND c.fkBanco = b.idBanco ";
+    	$resultado = mysql_query($query,$miBD->getConexion());
+    	$fila = mysql_fetch_array($resultado);
+    	if($fila != null)
+    	{
+    		$cuenta = new Cuenta();
+    		$cuenta->setIdCuenta($fila['idCuenta']);
+    		$cuenta->setCodigoCliente($fila['codigoCliente']);
+    		$cuenta->setTitular($fila['titular']);
+    		$cuenta->setStatus($fila['status']);
+    		$cuenta->setFkBanco($fila['fkBanco']);
+    		$cuenta->setBanco($fila['nombreBanco']);
+    
+    	}
+    	echo $query;
+    	mysql_close();
+    	return $cuenta;
+    
+    }
+    
+    
+    
+    public function registrar(Cuenta $cuenta)
+    {
+    	$query = "INSERT INTO Cuenta ";
+    	$query = $query." (codigoCliente,titular,status,fkBanco) VALUES (";
+    	$query = $query."'".$cuenta->getCodigoCliente()."',";
+    	$query = $query."'".$cuenta->getTitular()."',";
+    	$query = $query."'".$cuenta->getStatus()."',";
+    	$query = $query.$cuenta->getFkBanco().")";
+    
+    	$miBD = new ConexionBD();
+    	$miBD->setConexion($miBD->conectarBD($miBD));
+    
+    	$resultado=mysql_query($query,$miBD->getConexion());
+    	mysql_close();
+    	return $resultado;
+    }
+    
+    public function active($id)
+    {
+    	$query = "UPDATE Cuenta SET ";
+    	$query = $query." status='1' ";
+    	$query = $query." WHERE idCuenta= ".$id;
+    
+    	$miBD = new ConexionBD();
+    	$miBD->setConexion($miBD->conectarBD($miBD));
+    
+    	$resultado=mysql_query($query,$miBD->getConexion());
+    	mysql_close();
+    	return $resultado;
+    }
+    
+    public function delete($id)
+    {
+    	$query = "UPDATE Cuenta SET ";
+    	$query = $query." status='-1' ";
+    	$query = $query." WHERE idCuenta= ".$id;
+    
+    	$miBD = new ConexionBD();
+    	$miBD->setConexion($miBD->conectarBD($miBD));
+    
+    	$resultado=mysql_query($query,$miBD->getConexion());
+    	mysql_close();
+    	return $resultado;
+    }
+
+    public function getBanco()
+    {
+        return $this->banco;
+    }
+
+    public function setBanco($banco)
+    {
+        $this->banco = $banco;
+    }
 }
 
 ?>
