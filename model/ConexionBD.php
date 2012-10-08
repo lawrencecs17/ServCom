@@ -14,10 +14,10 @@ class ConexionBD {
 	private $conexion;
 
 	function __construct() {
-		$this->setDbhost("localhost");
+		$this->setDbhost("tunnel.pagodabox.com:3306");
 		$this->setDb("julieta");
-		$this->setDbpassword("1234");
-		$this->setDbusuario("root");
+		$this->setDbpassword("ikycawgu");
+		$this->setDbusuario("yetta");
 		$this->setConexion(null);
 	}
 
