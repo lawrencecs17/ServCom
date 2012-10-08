@@ -162,7 +162,6 @@ class Cuenta {
     		$cuenta->setBanco($fila['nombreBanco']);
     
     	}
-    	echo $query;
     	mysql_close();
     	return $cuenta;
     
@@ -207,6 +206,21 @@ class Cuenta {
     	$query = $query." status='-1' ";
     	$query = $query." WHERE idCuenta= ".$id;
     
+    	$miBD = new ConexionBD();
+    	$miBD->setConexion($miBD->conectarBD($miBD));
+    
+    	$resultado=mysql_query($query,$miBD->getConexion());
+    	mysql_close();
+    	return $resultado;
+    }
+    
+    public function update(Cuenta $cuenta)
+    {
+    	$query = "UPDATE Cuenta SET ";
+    	$query = $query." codigoCliente='".$cuenta->getCodigoCliente()."', ";
+    	$query = $query." titular='".$cuenta->getTitular()."', ";
+    	$query = $query." fkBanco='".$cuenta->getFkBanco()."' ";
+    	$query = $query." WHERE idCuenta= ".$cuenta->getIdCuenta();
     	$miBD = new ConexionBD();
     	$miBD->setConexion($miBD->conectarBD($miBD));
     
