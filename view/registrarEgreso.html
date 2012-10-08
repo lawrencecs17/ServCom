@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+<title>Insert title here</title>
+</head>
+<body>
+    <h1 align="center">{titulo}</h1>
+    </br>
+    <div class="container">
+        <div class="hero-unit">
+            <form action="{action}" method="post">
+            <input type="hidden" value="{id}" id="id" name="id" />
+            <input type="hidden" value="{list}" id="list" name="list" /> 
+                <table border="0" class="table">                    
+                    <tr>
+                        <td width="200">Nombre</td>
+                        <td><label> <input type="text" name="nombre"
+                                id="nombre" required="required" value="{nombre}" />
+                        </label></td>
+                        <td><label class="alert-error">{alert_nombre}</label></td>
+                    </tr>
+                    <tr>
+                        <td>Descripcion</td>
+                        <td><textarea rows="3" required="required"  id="descripcion" name="descripcion" >{descripcion}</textarea>
+                        </td>
+                        <td><label class="alert-error">{alert_descripcion}</label></td>
+                    </tr>
+                     <tr>
+                        <td>Fecha</td>
+                        <td><label> <input type="text" name="fecha"
+                                id="fecha" required="required" value="{fecha}" />
+                        </label>
+                        </td>
+                        <td><label class="alert-error">{alert_fecha}</label></td>
+                    </tr>
+                    <tr>
+                        <td>Tipo</td>
+                        <td><label align="left">{tituloComboBox}
+                                <SELECT NAME="tipo">
+                                    <OPTION VALUE="0">Seleccione</OPTION> {list}
+                            </SELECT>
+                        </label></td>
+                        <td><label class="alert-error">{alert_tipo}</label></td>
+                    </tr>
+                </table>
+                <div class="form-actions" align="center">
+                    <input class="btn" type="button" name="regresar" id="regresar"
+                        value="regresar" onclick=" location.href='{location}'" /> <input
+                        class="btn btn-primary" type="submit" name="aceptar" id="aceptar"
+                        value="aceptar" />
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

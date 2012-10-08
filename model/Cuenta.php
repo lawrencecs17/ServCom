@@ -165,9 +165,7 @@ class Cuenta {
     	mysql_close();
     	return $cuenta;
     
-    }
-    
-    
+    }    
     
     public function registrar(Cuenta $cuenta)
     {

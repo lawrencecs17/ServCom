@@ -7,18 +7,18 @@
 	require_once '../model/Egreso.php';
 	
 	// Constantes
-	$TITLE = "Gestion de Gastos";
-	$AGREGAR="registroUsuarioV.php";
-	$ELIMINAR="eliminarUsuarioV.php";
-	$CONSULTAR="#";
-	$EDITAR="modificarUsuarioV.php";
+	$TITLE = "Gestion de Egresos";
+	$AGREGAR="registrarEgresoV.php";
+	$ELIMINAR="eliminarEgresoV.php";
+	$CONSULTAR="consultarEgresoV.php";
+	$EDITAR="modificarEgresoV.php";
 	$ICON_UNLOCK="../image/icon_unlock";
-	$LINK_UNLOCK="activarUsuarioV.php";
-	$TITULO_DESBLOQUEAR="Desbloquear Gasto";
-	$TITULO_AGREGAR="Registrar Gasto";
-	$TITULO_ELIMINAR="Bloquear Gasto";
-	$TITULO_EDITAR="Editar Gasto";
-	$TITULO_CONSULTAR="Consultar Gasto";
+	$LINK_UNLOCK="activarEgresoV.php";
+	$TITULO_DESBLOQUEAR="Desbloquear Egreso";
+	$TITULO_AGREGAR="Registrar Egreso";
+	$TITULO_ELIMINAR="Bloquear Egreso";
+	$TITULO_EDITAR="Editar Egreso";
+	$TITULO_CONSULTAR="Consultar Egreso";
 	
 	//Se asigna a esta variable el archivo plantilla del home
 	$pnlmain = new Panel("../view/index.html");
