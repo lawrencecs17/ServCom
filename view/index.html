@@ -23,9 +23,10 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Profile</a></li>
+              <li><a href="#" onclick="javascript:$('#profile').submit(); return false;">
+              Profile</a></li>
               <li class="divider"></li>
-              <li><a href="#">Sign Out</a></li>
+              <li><a href="../index.html">Sign Out</a></li>
             </ul>
           </div>
           <div class="nav-collapse">
@@ -39,7 +40,14 @@
       </div>
     </div>    
 	<div class="fundaContent">{content}</div>
-	
+
+	<div>
+		<form action="../controller/consultarUsuario.php" method="post"
+			id="profile">
+			<input type="hidden" id="listUsuario" name="listUsuario" value="{id}" />
+		</form>
+	</div>
+
 	<script src="../js/jquery.js"></script>    
     <script src="../js/bootstrap-dropdown.js"></script>
    

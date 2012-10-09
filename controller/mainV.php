@@ -12,7 +12,7 @@
 	
 	$usuario = new Persona();
 	$usuario = $usuario->findByCedula($_SESSION["usuario"]);
-	
+	$pnlmain->add("id",$usuario->getCedula());
 	//Se procede la asignación	
 	$pnlcontent = new Panel("../view/menu.html");
 	$pnlcontent->add("user",$usuario->getNombre()." ".$usuario->getApellido());
